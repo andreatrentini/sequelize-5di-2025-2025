@@ -1,1 +1,9 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=18368124&assignment_repo_type=AssignmentRepo)
+# utilizzo di un ORM
+## che cos'è un ORM
+- ORM sta per Object Relational Model 
+- il concetto di base è che si va a mappare tutto il database con un modello ad oggetti: obbiettivo di togliere dall'app tutte le istruzioni di sql 
+- i nostri record diventeranno istanze di una classe che contiene gli attributi di SQL 
+- l'app diventa indipendente dal database --> se si vuole cambiare database l'app non subisce modifiche (salvo utilizzo di tipo di dati che non ci sono tra vari tipi di db)
+- pacchetto di node --> c'è anche su altri linguaggi 
+- impedisce attacchi sql injection
+- 
