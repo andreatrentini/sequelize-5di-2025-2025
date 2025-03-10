@@ -51,4 +51,4 @@ services:
     tty: true
     depends_on:
       sql-server:
-        condition: service_healty
+        condition: service_healthy
