@@ -15,7 +15,7 @@ secrets:
     file: .secretKey
 
 services:
-  sql-server:
+  sql-server: 
     image: mysql:8
     container_name: sqlserver
     environment:
