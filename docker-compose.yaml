@@ -33,3 +33,22 @@ services:
     restart: always
     ports:
       - 3370:3306
+  node-server:
+    image: node:latest
+    container_name: wsserver
+    secrets:
+      - dbPassword
+      - initSecret
+      - secretKey
+    ports:
+      - 3000:3000
+    networks:
+      - db-ws-lan
+    working_dir: /app
+    volumes:
+      - ./wsserver:/app
+    stdin_open: true
+    tty: true
+    depends_on:
+      sql-server:
+        condition: service_healty
