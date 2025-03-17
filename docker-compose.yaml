@@ -1,0 +1,54 @@
+volumes:
+  db-data:
+    driver: local
+
+networks:
+  db-ws-lan:
+    driver: bridge
+
+secrets:
+  dbPassword: 
+    file: .dbPassw
+  initSecret:
+    file: .initSecret
+  secretKey:
+    file: .secretKey
+
+services:
+  sql-server: 
+    image: mysql:8
+    container_name: sqlserver
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    networks: 
+      - db-ws-lan
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--password=${MYSQL_ROOT_PASSWORD}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+    restart: always
+    ports:
+      - 3370:3306
+  node-server:
+    image: node:latest
+    container_name: wsserver
+    secrets:
+      - dbPassword
+      - initSecret
+      - secretKey
+    ports:
+      - 3000:3000
+    networks:
+      - db-ws-lan
+    working_dir: /app
+    volumes:
+      - ./wsserver:/app
+    stdin_open: true
+    tty: true
+    depends_on:
+      sql-server:
+        condition: service_healthy
