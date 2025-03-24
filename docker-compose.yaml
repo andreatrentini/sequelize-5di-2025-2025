@@ -12,7 +12,7 @@ secrets:
   initSecret:
     file: .initSecret
   secretKey:
-    file: .secretKey
+    file: .secretkey
 
 services:
   sql-server: 

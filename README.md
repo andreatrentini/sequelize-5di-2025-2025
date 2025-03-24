@@ -6,4 +6,10 @@
 - l'app diventa indipendente dal database --> se si vuole cambiare database l'app non subisce modifiche (salvo utilizzo di tipo di dati che non ci sono tra vari tipi di db)
 - pacchetto di node --> c'è anche su altri linguaggi 
 - impedisce attacchi sql injection
-- 
+
+## Inizializzazione progetto
+```bash
+npm init
+npm install cors express mysql2 sequelize
+npm install -g nodemon
+```
